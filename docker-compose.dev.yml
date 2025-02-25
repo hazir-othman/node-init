@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node-init:
+    container_name: node-init
+    image: node-init:dev
+    build:
+      context: ./
+      dockerfile: ./Dockerfiles/NodeInitDev
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./db:/usr/src/app/db
+      - ./routes:/usr/src/app/routes
+      - ./views:/usr/src/app/views
+

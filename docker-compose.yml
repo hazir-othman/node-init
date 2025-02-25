@@ -1,0 +1,16 @@
+services:
+  nodeinit:
+    container_name: node-init
+    image: node-init:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfiles/NodeInit
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./db:/usr/src/app/db
+      - ./routes:/usr/src/app/routes
+      - ./views:/usr/src/app/views
+
